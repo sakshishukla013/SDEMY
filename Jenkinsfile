@@ -1,10 +1,14 @@
 pipeline {
     agent any
 
+    environment {
+        IMAGE_NAME = "sakshi644/sdemy-react-app"  // Recommended to use DockerHub-style naming
+    }
+
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/sakshishukla013/SDEMY' // replace with your actual repo
+                git 'https://github.com/sakshishukla013/SDEMY'
             }
         }
 
@@ -23,7 +27,7 @@ pipeline {
         stage('Docker Build & Push') {
             steps {
                 script {
-                    dockerImage = docker.build("sakshi644")
+                    def dockerImage = docker.build("${IMAGE_NAME}")
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-credentials-id') {
                         dockerImage.push("latest")
                     }
@@ -33,8 +37,8 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo 'Deploying...'
-                // Add deployment logic here
+                echo 'Deploying to production/staging...'
+                
             }
         }
     }
