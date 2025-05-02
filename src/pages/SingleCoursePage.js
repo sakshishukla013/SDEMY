@@ -18,7 +18,8 @@ const SingleCoursePage = () => {
 
   useEffect(() => {
     fetchSingleCourse(id);
-  }, []);
+  }, [fetchSingleCourse, id]);
+  
 
   const {id: courseID, category, image, course_name, description, rating_count, rating_star, students, creator, updated_date, lang, actual_price, discounted_price, what_you_will_learn: learnItems, content} = single_course;
 
