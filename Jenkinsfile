@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/sakshishukla013/SDEMY'
+                git 'https://github.com/sakshishukla013/SDEMY.git'
             }
         }
 
