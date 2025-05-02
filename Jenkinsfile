@@ -2,16 +2,15 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "sakshi644/sdemy-react-app"  // Recommended to use DockerHub-style naming
+        IMAGE_NAME = "sakshi644/sdemy-react-app"
     }
 
     stages {
-    stage('Clone') {
-        steps {
-            git branch: 'main', url: 'https://github.com/sakshishukla013/SDEMY.git'
+        stage('Clone') {
+            steps {
+                git branch: 'main', url: 'https://github.com/sakshishukla013/SDEMY.git'
+            }
         }
-    }
-    }
 
         stage('Install Dependencies') {
             steps {
@@ -39,8 +38,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying to production/staging...'
-                
+                // Add deployment steps here
             }
         }
     }
-
+}
