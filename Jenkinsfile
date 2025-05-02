@@ -25,15 +25,16 @@ pipeline {
         }
 
         stage('Docker Build & Push') {
-            steps {
-                script {
-                    def dockerImage = docker.build("${IMAGE_NAME}")
-                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-credentials-id') {
-                        dockerImage.push("latest")
-                    }
-                }
-            }
-        }
+  steps {
+    script {
+      def app = docker.build("sakshishukla013/sdemy")
+      docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-credentials-id') {
+        app.push("latest")
+      }
+    }
+  }
+}
+
 
         stage('Deploy') {
             steps {
