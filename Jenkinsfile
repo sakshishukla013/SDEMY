@@ -6,11 +6,12 @@ pipeline {
     }
 
     stages {
-        stage('Clone') {
-            steps {
-                git 'https://github.com/sakshishukla013/SDEMY.git'
-            }
+    stage('Clone') {
+        steps {
+            git branch: 'main', url: 'https://github.com/sakshishukla013/SDEMY.git'
         }
+    }
+    }
 
         stage('Install Dependencies') {
             steps {
